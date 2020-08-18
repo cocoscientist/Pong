@@ -12,8 +12,8 @@ const dy = 2.85;
 
 //score for players
 var score = {
-    p1 = 0,
-    p2 = 0
+    p1: 0,
+    p2: 0
 };
 
 //storing events
@@ -26,23 +26,23 @@ addEventListener("keyup",function(e){
 },false);
 
 var ball = {
-    x = 240,
-    y = 1 + (Math.random()*358),
-    Xmag = 1.5,
-    Ymag = 1,
-    radius = 10
+    x: 240,
+    y: 1 + (Math.random()*358),
+    Xmag: 1.5,
+    Ymag: 1,
+    radius: 10
 };
 
 //Player 1
 var player1 = {
-    x = 30,
-    y = 240
+    x: 30,
+    y: 240
 };
 
 //Player 2
 var player2 = {
-    x = 435,
-    y = 240
+    x: 435,
+    y: 240
 };
 
 function keyEvents(){
