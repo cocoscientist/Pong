@@ -36,36 +36,64 @@ var ball = {
 //Player 1
 var player1 = {
     x: 30,
-    y: 240
+    y: 140
 };
 
 //Player 2
 var player2 = {
     x: 435,
-    y: 240
+    y: 140
 };
 
 function keyEvents(){
     if(87 in events){
         player1.y -= (player1.y<=0.001?0:dy);
     }else if(83 in events){
-        player1.y += (player1.y>=359.999?0:dy);
+        player1.y += (player1.y>=(359.999-paddleHeight)?0:dy);
     }
 
     if(38 in events){
         player2.y -= (player2.y<=0.001?0:dy);
     }else if(40 in events){
-        player2.y += (player2.y>=359.999?0:dy);
+        player2.y += (player2.y>=(359.999-paddleHeight)?0:dy);
     }
 }
+
 
 //Update function
 function update(){
     keyEvents();
+
     if(ball.y < ball.radius || ball.y > canvas.height - ball.radius){
         ball.Ymag *= -1;
     }
-    
+
+    if(ball.x > player2.x){
+        if(ball.y >= player2.y && ball.y <= player2.y + paddleHeight){
+            ball.Xmag *= -1;
+        }else{
+            if(ball.x == canvas.width - ball.radius){
+                score.p1++;
+                ball.x = 240;
+                ball.y = 1 + (Math.random()*358);
+                ball.Xmag = 1.5;
+                ball.Ymag = 1;
+            }
+        }
+    }else if(ball.x < player1.x + paddleWidth){
+        if(ball.y >= player1.y && ball.y <= player1.y + paddleHeight){
+            ball.Xmag *= -1;
+        }else{
+            if(ball.x <= ball.radius){
+                score.p2++;
+                ball.x = 240;
+                ball.y = 1 + (Math.random()*358);
+                ball.Xmag = -1.5;
+                ball.Ymag = 1;
+            }
+        }
+    }
+
     ball.x += ball.Xmag;
     ball.y += ball.Ymag;
 
@@ -84,3 +112,4 @@ function draw(){
     update();
     requestAnimationFrame(draw);
 }
+draw();
