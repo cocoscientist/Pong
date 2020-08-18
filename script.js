@@ -59,6 +59,12 @@ function keyEvents(){
     }
 }
 
+function drawScore(){
+    ctx.font = "30px monospace";
+    ctx.fillStyle="white";
+    ctx.fillText(score.p1,50,30);
+    ctx.fillText(score.p2,430,30);
+}
 
 //Update function
 function update(){
@@ -93,7 +99,7 @@ function update(){
             }
         }
     }
-
+    drawScore();
     ball.x += ball.Xmag;
     ball.y += ball.Ymag;
 
