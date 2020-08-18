@@ -73,5 +73,14 @@ function update(){
 
 //draw function
 function draw(){
-
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.beginPath();
+    ctx.arc(ball.x,ball.y,ball.radius,0,Math.PI*2);
+    ctx.rect(player1.x,player1.y,paddleWidth,paddleHeight);
+    ctx.rect(player2.x,player2.y,paddleWidth,paddleHeight);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+    update();
+    requestAnimationFrame(draw);
 }
