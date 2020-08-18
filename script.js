@@ -27,7 +27,7 @@ addEventListener("keyup",function(e){
 
 var ball = {
     x: 240,
-    y: 1 + (Math.random()*358),
+    y: 1 + (Math.random()*348),
     Xmag: 1.5,
     Ymag: 1,
     radius: 10
@@ -63,7 +63,7 @@ function drawScore(){
     ctx.font = "30px monospace";
     ctx.fillStyle="white";
     ctx.fillText(score.p1,50,30);
-    ctx.fillText(score.p2,430,30);
+    ctx.fillText(score.p2,410,30);
 }
 
 //Update function
@@ -75,10 +75,10 @@ function update(){
     }
 
     if(ball.x > player2.x){
-        if(ball.y >= player2.y && ball.y <= player2.y + paddleHeight){
-            ball.Xmag *= -1;
+        if(ball.y >= player2.y && ball.y <= player2.y + paddleHeight && ball.x < player2.x + paddleWidth){
+            ball.Xmag *= -1.15;
         }else{
-            if(ball.x == canvas.width - ball.radius){
+            if(ball.x >= canvas.width - ball.radius){
                 score.p1++;
                 ball.x = 240;
                 ball.y = 1 + (Math.random()*358);
@@ -87,8 +87,8 @@ function update(){
             }
         }
     }else if(ball.x < player1.x + paddleWidth){
-        if(ball.y >= player1.y && ball.y <= player1.y + paddleHeight){
-            ball.Xmag *= -1;
+        if(ball.y >= player1.y && ball.y <= player1.y + paddleHeight && ball.x > player1.x){
+            ball.Xmag *= -1.15;
         }else{
             if(ball.x <= ball.radius){
                 score.p2++;
