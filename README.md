@@ -4,4 +4,4 @@ Written using Vanilla Javascript.
 
 Preview-
 
-![Preview](Demo/preview.gif)
+![Preview](demo/preview.gif)
