@@ -1,1 +1,1 @@
-to store a preview
+Store gif(s) for preview.
